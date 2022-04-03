@@ -1,6 +1,5 @@
-import { Card, CardActionArea, CardHeader, CardMedia } from "@mui/material";
-import axios from "axios";
-import { useContext, useEffect, useState } from "react";
+import { Card, CardActionArea, CardMedia } from "@mui/material";
+import { useContext, useEffect } from "react";
 import { UserContext } from "../providers/userProvider";
 
 export const CardGroup = ({getRecords, storeAssets, setStoreAssets}) => {
@@ -12,6 +11,7 @@ export const CardGroup = ({getRecords, storeAssets, setStoreAssets}) => {
   
     useEffect(()=>{
       getRecords()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     },[])
   
     

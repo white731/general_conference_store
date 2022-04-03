@@ -1,5 +1,5 @@
-import { Card, CardActionArea, CardHeader, CardMedia, Container } from "@mui/material";
-import { useContext, useState } from "react";
+import { Card, CardActionArea, CardHeader, Container } from "@mui/material";
+import { useContext } from "react";
 import { UserContext } from "../providers/userProvider";
 
 const store =[

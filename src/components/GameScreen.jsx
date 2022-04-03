@@ -1,6 +1,5 @@
 import axios from "axios"
-import { useContext, useState } from "react"
-import { UserContext } from "../providers/userProvider"
+import { useState } from "react"
 import { CardGroup } from "./CardGroup"
 import { Points } from "./Points"
 
@@ -35,7 +34,6 @@ export const GameScreen = () => {
         
       }
 
-    const user = useContext(UserContext)
     return(
         <div style ={gameBoardStyle}>
             <CardGroup getRecords={getRecords} storeAssets={storeAssets} setStoreAssets={setStoreAssets} />

@@ -1,11 +1,10 @@
-import { Axios } from "axios"
 import { useContext, useState, useEffect} from "react"
 import { UserContext } from "../providers/userProvider"
 
 const FetchUser = (props) => {
 
   const [checkEmail, setCheckEmail] = useState(false)
-  const {userName, setUserName, handleLogout, getUser} = useContext(UserContext)
+  const {userName, handleLogout, getUser} = useContext(UserContext)
 
   useEffect(()=>{
     getUserOnRefresh()
