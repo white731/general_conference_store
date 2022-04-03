@@ -9,8 +9,6 @@ export const Login = () => {
 
     const user = useContext(UserContext)
 
-    const navigate = useNavigate()
-
     const handleSubmit = (e) => {
         e.preventDefault()
         user.getUser(userName)

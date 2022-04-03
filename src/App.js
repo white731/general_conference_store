@@ -1,4 +1,4 @@
-import { Container, Switch } from "@mui/material";
+import { Container } from "@mui/material";
 import { GameScreen } from "./components/GameScreen";
 import { Login } from "./components/Login";
 import { Route, Routes } from "react-router";
