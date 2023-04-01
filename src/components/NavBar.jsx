@@ -8,7 +8,7 @@ const NavBar = ()=>{
     const {user, handleLogout} = useContext(UserContext)
 
     const navigate = useNavigate()
-
+    console.log(user)
     const handleButtonClick = (path, action)=> {
         navigate(path)
         if(action === "logout"){
@@ -36,8 +36,8 @@ const NavBar = ()=>{
             <div style={{display: "flex", flexDirection: "row"}}>
                 {user ? renderGameButton() : ""}
                 {user ? renderUserName() : ""}
-                <Button sx={{margin: 2}} variant="contained" size="small" onClick = {()=>handleButtonClick("/", user ? "logout" : "login")}>
-                    {user.userName ? "Logout" : "Login"}
+                <Button sx={{margin: 2}} variant="contained" size="small" onClick = {()=>handleButtonClick("/", user.userId ? "logout" : "login")}>
+                    {user.userId ? "Logout" : "Login"}
                 </Button>
             </div>
         )
@@ -46,8 +46,8 @@ const NavBar = ()=>{
         return(
         <AppBar position="sticky" color="warning" sx={{ top: 0, bottom: 'auto' }}>
             <Toolbar sx={{display: "flex", flexDirection: "column", alignItems: "center"}}>
-                {user.userName ? loggedInToolbar() : ""}
-                 <Typography sx={{margin: "4px"}}>{user.userName ? `You have ${user.points} points` : "Please login to start playing"}</Typography>
+                {user.userId ? loggedInToolbar() : ""}
+                 <Typography sx={{margin: "4px"}}>{user.userId ? `You have ${user.points} points` : "Please login to start playing"}</Typography>
             </Toolbar>
         </AppBar>
         )

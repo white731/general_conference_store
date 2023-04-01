@@ -1,4 +1,4 @@
-import { Card, CardActionArea, CardMedia } from "@mui/material";
+import { Card, CardActionArea, CardMedia, Container } from "@mui/material";
 import { useContext, useEffect } from "react";
 import { UserContext } from "../providers/userProvider";
 
@@ -22,7 +22,7 @@ export const CardGroup = ({getRecords, storeAssets, setStoreAssets}) => {
     }
   
     return (
-      <div style={{ 
+      <Container fixed style={{ 
 
           display: "flex",
           flexDirection: "row",
@@ -32,7 +32,7 @@ export const CardGroup = ({getRecords, storeAssets, setStoreAssets}) => {
         {storeAssets.map((x)=>
         {
           return(
-            <Card sx={{margin: 1, width:"25%"}} key={x.id}>
+            <Card sx={{margin: "2px", width:{xs:"23%",sm:"17%"}, borderRadius: 0}} key={x.id}>
               <CardActionArea
                 onClick={()=>handleAddPoints(user.userId, x.id, 1)}
               >
@@ -46,6 +46,6 @@ export const CardGroup = ({getRecords, storeAssets, setStoreAssets}) => {
             </Card>
           )
         })}
-      </div>
+      </Container>
     );
 } 
