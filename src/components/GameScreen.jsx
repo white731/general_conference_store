@@ -1,16 +1,18 @@
 import axios from "axios"
 import { useState } from "react"
 import { CardGroup } from "./CardGroup"
-import { Points } from "./Points"
+import { Button } from "@mui/material"
+import { useNavigate } from "react-router"
 
 const gameBoardStyle = {
     display: "flex",
-    flexDirection: "Row"
+    flexDirection: "Column"
 }
 
 export const GameScreen = () => {
 
     const [storeAssets, setStoreAssets]  = useState([]) 
+    const navigate = useNavigate()
 
     const getRecords = async () => {
 
@@ -37,7 +39,7 @@ export const GameScreen = () => {
     return(
         <div style ={gameBoardStyle}>
             <CardGroup getRecords={getRecords} storeAssets={storeAssets} setStoreAssets={setStoreAssets} />
-            <Points/>
+            <Button variant="contained" onClick={()=>{navigate("/buystuff") }}>Buy Stuff</Button>
         </div>
     )
 }

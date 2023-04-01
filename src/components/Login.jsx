@@ -1,28 +1,40 @@
-import { Button, TextField } from "@mui/material"
+import { Button, TextField, Container } from "@mui/material"
 import { useContext, useState } from "react"
 import { UserContext } from "../providers/userProvider"
+import { useNavigate } from "react-router"
 
 export const Login = () => {
 
     const [userName, setUserName] = useState("")
 
     const user = useContext(UserContext)
+    const navigate = useNavigate()
 
     const handleSubmit = (e) => {
-        e.preventDefault()
-        user.getUser(userName)
+        try {
+            e.preventDefault()
+            console.log(userName)
+            user.getUser(userName)
+            navigate("/play")
+        } catch (error) {
+            
+        }
+        
     }
 
     return(
-    <form onSubmit={(e)=>handleSubmit(e)}>
+    <Container sx={{display:"flex", justifyContent: "center"}}>
+    <form style={{display:"flex", flexDirection: "column", marginTop: "182"}} onSubmit={(e)=>handleSubmit(e)}>
         <TextField
-            variant = "standard"
-            value = {userName}  
+            variant = "outlined"
+            value = {userName}
+            placeholder="Enter Username"
             onChange ={(e)=>setUserName(e.target.value)}  
         />
-        <Button type="submit">
+        <Button sx={{marginTop: "10px"}}variant="contained" type="submit">
             Submit
         </Button>
     </form>
+    </Container>
     )
 }

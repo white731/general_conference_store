@@ -37,7 +37,7 @@ const UserProvider = (props) => {
   }
 
   const handleLogout = () => {
-    setUser(null)
+    setUser({userName: null, userId: null, points: null})
     localStorage.clear()
   }
 

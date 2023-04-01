@@ -1,9 +1,9 @@
-import { Container } from "@mui/material";
 import { GameScreen } from "./components/GameScreen";
 import { Login } from "./components/Login";
 import { Route, Routes } from "react-router";
 import NavBar from "./components/NavBar";
 import FetchUser from "./components/FetchUser";
+import { Points } from "./components/Points";
 
 
 
@@ -12,12 +12,11 @@ function App() {
     <>
     <NavBar />
     <FetchUser>
-      <Container fixed>
         <Routes>
           <Route exact path='/' element={<Login/>}/>
           <Route exact path='/play' element={<GameScreen/>}/>
+          <Route exact path="/buystuff" element={<Points/>}/>
         </Routes>
-      </Container>
     </FetchUser>
   </>
   )

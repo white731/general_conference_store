@@ -1,11 +1,12 @@
-import { Card, CardActionArea, CardHeader, Container } from "@mui/material";
+import { Card, CardActionArea, CardHeader, Container, Typography, Button } from "@mui/material";
 import { useContext } from "react";
 import { UserContext } from "../providers/userProvider";
+import { useNavigate } from "react-router";
 
 const store =[
     {
-        name: "75 Points",
-        value: -75
+        name: "60 Points",
+        value: -50
     },
     {
         name: "50 Points",
@@ -45,6 +46,7 @@ const store =[
 export const Points = () => {
 
     const {user, addAPoint, setUser} = useContext(UserContext)
+    const navigate = useNavigate();
 
     const handleSubtractPoints =(points)=>{
         if(user.points + points < 0){
@@ -57,28 +59,25 @@ export const Points = () => {
     }
 
     return(
-        <Container>
-            <Card>
-                <CardHeader 
-                title={`You have ${user.points} points`}
-                />
-                
-            </Card>
+        <Container style={{display: "flex", flexDirection: "column"}}>
             
-            <Card style={{marginTop:"10px"}}>
-                <CardHeader title="Buy Stuff!"/>
-            </Card>
+            <div style={{marginTop:"10px", marginBottom: "10px", textAlign: "center"}}>
+                <Typography variant="h4">Buy Stuff</Typography>
+            </div>
 
+            <div style={{display:"flex", flexDirection: "row", flexFlow: "wrap", justifyContent: "center"}}>
             {store.map((x)=>{
                 return(
-                    <Card key={x.name}>
+                    <Card key={x.name} style={{margin: 2}}>
                         <CardActionArea onClick={()=>handleSubtractPoints(x.value)}>
                             <CardHeader title={x.name}/>
                         </CardActionArea>
                     </Card>
                 )
             })}
-            
+            </div>
+            <Button variant="contained" onClick={()=>{navigate("/play") }}>Get More Points</Button>
+
         </Container>
     )
 }

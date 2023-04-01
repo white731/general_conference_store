@@ -20,7 +20,6 @@ const FetchUser = (props) => {
       try {
           getUser(localStorage.getItem("userName"))
           } catch (error) {
-            debugger
               handleLogout()
           } finally {
             setCheckEmail(true)

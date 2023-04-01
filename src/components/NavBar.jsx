@@ -1,13 +1,7 @@
-import { Button } from "@mui/material"
+import { Button, AppBar, Toolbar, Typography } from "@mui/material"
 import { useContext } from "react"
 import { useNavigate } from "react-router-dom"
 import { UserContext } from "../providers/userProvider"
-
-
-const navBarStyle = {
-    display: "flex",
-    flexDirection: "row"
-}
 
 const NavBar = ()=>{
     
@@ -24,26 +18,38 @@ const NavBar = ()=>{
 
     const renderUserName = () => {
         return(
-            <h3>Welcome {user.userName}!</h3>
+            <h3 style={{textAlign: "center"}}>Welcome {user.userName}!</h3>
         )
     }
 
     const renderGameButton = () => {
         return(
-            <Button onClick = {()=>handleButtonClick("/play")}>
+            <Button sx={{margin: 2}} variant="contained" size="small" onClick = {()=>handleButtonClick("/play")}>
                 Home
             </Button>
         )
     }
 
+    const loggedInToolbar = () => {
+        console.log(user)
         return(
-        <div style={navBarStyle}>
-            {user ? renderGameButton() : ""}
-            <Button onClick = {()=>handleButtonClick("/", user ? "logout" : "login")}>
-                {user ? "Logout" : "Login"}
-            </Button>
-            {user ? renderUserName() : ""}
-        </div>
+            <div style={{display: "flex", flexDirection: "row"}}>
+                {user ? renderGameButton() : ""}
+                {user ? renderUserName() : ""}
+                <Button sx={{margin: 2}} variant="contained" size="small" onClick = {()=>handleButtonClick("/", user ? "logout" : "login")}>
+                    {user.userName ? "Logout" : "Login"}
+                </Button>
+            </div>
+        )
+    }
+
+        return(
+        <AppBar position="sticky" color="warning" sx={{ top: 0, bottom: 'auto' }}>
+            <Toolbar sx={{display: "flex", flexDirection: "column", alignItems: "center"}}>
+                {user.userName ? loggedInToolbar() : ""}
+                 <Typography sx={{margin: "4px"}}>{user.userName ? `You have ${user.points} points` : "Please login to start playing"}</Typography>
+            </Toolbar>
+        </AppBar>
         )
 
   

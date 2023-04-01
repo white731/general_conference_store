@@ -24,24 +24,21 @@ export const CardGroup = ({getRecords, storeAssets, setStoreAssets}) => {
     return (
       <div style={{ 
 
-          display: "grid",
-          gridTemplateColumns: "repeat(5, 125px)",
-          gap: "10px",
-          gridAutoRows: "minmax(125px,125px)",
-          gridAutoColumns: "minmax(125px, 125px)",
+          display: "flex",
+          flexDirection: "row",
+          flexFlow: "wrap",
           justifyContent: "center"
         }}>
         {storeAssets.map((x)=>
         {
           return(
-            <Card key={x.id}>
+            <Card sx={{margin: 1, width:"25%"}} key={x.id}>
               <CardActionArea
                 onClick={()=>handleAddPoints(user.userId, x.id, 1)}
               >
                 <CardMedia
+                  sx={{objectFit:"scale-down"}}
                   component="img"
-                  height="125"
-                  width="125"
                   image={x.fields.Attachments[0].url}
                   alt={x.fields.name}
                 />
