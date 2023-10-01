@@ -13,8 +13,8 @@ function App() {
     <NavBar />
     <FetchUser>
         <Routes>
-          <Route exact path='/' element={<Login/>}/>
-          <Route exact path='/play' element={<GameScreen/>}/>
+          <Route exact path='/login' element={<Login/>}/>
+          <Route exact path='/' element={<GameScreen/>}/>
           <Route exact path="/buystuff" element={<Points/>}/>
         </Routes>
     </FetchUser>
