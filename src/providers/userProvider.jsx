@@ -15,6 +15,14 @@ const UserProvider = (props) => {
     points: null,
   });
 
+  const [users, setUsers] = useState([
+    {
+      createdTime: null,
+      fields: { name: null, totalPoints: null },
+      id: null,
+    },
+  ]);
+
   const getUser = async (userName) => {
     let table = "Users";
     let url =
@@ -44,6 +52,24 @@ const UserProvider = (props) => {
       console.log(res.data.records[0].fields.TotalPoints);
 
       localStorage.setItem("userName", res.data.records[0].fields.Name);
+    } catch (error) {}
+  };
+
+  const getUsers = async () => {
+    let table = "Users";
+    let url = "https://api.airtable.com/v0/" + app_id + "/" + table;
+
+    let axiosConfig = {
+      headers: {
+        Authorization: "Bearer " + app_key,
+        "Content-Type": "application/json",
+      },
+    };
+
+    try {
+      let res = await Axios.get(url, axiosConfig);
+      console.log(res.data.records);
+      setUsers(res.data.records);
     } catch (error) {}
   };
 
@@ -88,6 +114,8 @@ const UserProvider = (props) => {
         getUser,
         handleLogout,
         addAPoint,
+        getUsers,
+        users,
       }}
     >
       {props.children}
