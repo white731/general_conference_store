@@ -37,6 +37,14 @@ const NavBar = () => {
     return (
       <div style={{ display: "flex", flexDirection: "row" }}>
         {user ? renderGameButton() : ""}
+        <Button
+          sx={{ margin: 2 }}
+          variant="contained"
+          size="small"
+          onClick={() => handleButtonClick("/stats")}
+        >
+          Stats
+        </Button>
         {user ? renderUserName() : ""}
         <Button
           sx={{ margin: 2 }}
