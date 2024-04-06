@@ -27,7 +27,7 @@ const Stats = () => {
               <Typography>{x.fields.Name}</Typography>
               <Typography>Current Points: {x.fields.TotalPoints}</Typography>
               <Typography>
-                Total Points Earned: {x.fields.Points.length}
+                Total Points Earned: {x.fields.Points?.length}
               </Typography>
             </CardContent>
           </Card>
