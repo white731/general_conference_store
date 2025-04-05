@@ -9,6 +9,7 @@ const UserProvider = (props) => {
     "pat5lPwuYvtAqOvlM.b863d9705446e58947a355c72e7166014adef0875bfa23226a740e353b032a85";
   let app_id = "apppyyL3422VTkvRC";
 
+  //set the user at the beginning
   const [user, setUser] = useState({
     userName: null,
     userId: null,
