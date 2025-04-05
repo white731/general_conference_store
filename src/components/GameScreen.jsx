@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useState } from "react";
 import { CardGroup } from "./CardGroup";
-import { Button, Typography } from "@mui/material";
+import { Button } from "@mui/material";
 import { useNavigate } from "react-router";
 
 const gameBoardStyle = {
