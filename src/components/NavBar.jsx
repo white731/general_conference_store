@@ -47,7 +47,7 @@ const NavBar = () => {
         </Button>
         {user ? renderUserName() : ""}
         <Button
-          sx={{ margin: 2, visibility: "hidden" }}
+          sx={{ margin: 2 }}
           variant="contained"
           size="small"
           onClick={() =>
