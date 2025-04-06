@@ -1,10 +1,16 @@
 import axios from "axios";
 import { useState } from "react";
 import { CardGroup } from "./CardGroup";
-import { Button } from "@mui/material";
+import { Button, Box } from "@mui/material";
 import { useNavigate } from "react-router";
+import { TwitterTimelineEmbed } from "react-twitter-embed";
 
 const gameBoardStyle = {
+  display: "flex",
+  flexDirection: "Row",
+};
+
+const gamePlayStyle = {
   display: "flex",
   flexDirection: "Column",
 };
@@ -45,25 +51,37 @@ export const GameScreen = () => {
     } catch (error) {}
   };
 
-  //   if (loading) {
-  //     return <Typography>Loading...</Typography>;
-  //   }
+  const LDSConfFeed = () => {
+    return (
+      <TwitterTimelineEmbed
+        sourceType="profile"
+        screenName="ldsconf"
+        options={{ height: 600, tweetLimit: 5, width: 200 }}
+      />
+    );
+  };
 
   return (
     <div style={gameBoardStyle}>
-      <CardGroup
-        getRecords={getRecords}
-        storeAssets={storeAssets}
-        setStoreAssets={setStoreAssets}
-      />
-      <Button
-        variant="contained"
-        onClick={() => {
-          navigate("/buystuff");
-        }}
-      >
-        Buy Stuff
-      </Button>
+      <Box sytle={gamePlayStyle}>
+        <CardGroup
+          getRecords={getRecords}
+          storeAssets={storeAssets}
+          setStoreAssets={setStoreAssets}
+        />
+      </Box>
+      <Box sx={{ display: "flex", flexDirection: "column" }}>
+        {LDSConfFeed()}
+        <Button
+          sx={{ marginTop: 2 }}
+          variant="contained"
+          onClick={() => {
+            navigate("/buystuff");
+          }}
+        >
+          Buy Stuff
+        </Button>
+      </Box>
     </div>
   );
 };
