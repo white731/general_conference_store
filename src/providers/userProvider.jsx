@@ -24,6 +24,35 @@ const UserProvider = (props) => {
     },
   ]);
 
+  const addUser = async (newUser) => {
+    console.log(newUser);
+    let table = "Users";
+    let url = "https://api.airtable.com/v0/" + app_id + "/" + table;
+
+    let axiosConfig = {
+      headers: {
+        Authorization: "Bearer " + app_key,
+        "Content-Type": "application/json",
+      },
+    };
+
+    let data = {
+      records: [
+        {
+          fields: {
+            Name: newUser,
+            Points: [],
+          },
+        },
+      ],
+    };
+
+    try {
+      let res = await Axios.post(url, data, axiosConfig);
+      console.log(res.data);
+    } catch (error) {}
+  };
+
   const getUser = async (userName) => {
     let table = "Users";
     let url =
@@ -116,6 +145,8 @@ const UserProvider = (props) => {
         handleLogout,
         addAPoint,
         getUsers,
+        addUser,
+        setUsers,
         users,
       }}
     >
